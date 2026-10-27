@@ -1,41 +1,73 @@
 # Saloonsync marketing
 
-Next.js App Router, TypeScript and Tailwind CSS. Shared components and content-driven static marketing routes; identity pages remain external links only.
+Next.js App Router, TypeScript, Tailwind CSS and Resend. The public website includes 20 marketing pages. Salon OS, customer booking and shared identity are separate applications; identity links remain configurable.
 
-## Run
+## Local development
 
-- `npm install`
-- `npm run dev`
-- `npm run typecheck`
-- `npm run build`
-- `npm start`
+Use Node.js 24 (`.nvmrc` and `package.json`), then:
 
-Webpack is selected because Turbopack's CSS worker failed on this Windows environment.
+```sh
+npm ci
+npm run dev
+```
 
-Copy `.env.example` to `.env.local`. Set `NEXT_PUBLIC_SITE_URL` to the final HTTPS marketing origin to enable canonical URLs and the sitemap. Set `NEXT_PUBLIC_LOGIN_URL` and `NEXT_PUBLIC_REGISTER_URL` to the real shared identity destinations. Until configured, account links lead to the identity notice on the home page.
+Development output lives in `.next`. Local production output lives in `.next-production` so production builds cannot replace the live development CSS. Stop a production server before rebuilding its output.
 
-## Routes and content
+## Checks
 
-`src/lib/content.ts` owns feature and solution content and the public route list. `src/app/[...slug]/page.tsx` statically generates the distinct marketing pages and per-page metadata. The home page remains at `src/app/page.tsx`.
+```sh
+npm test
+npm run typecheck
+npm run build
+npm start
+npm run verify
+```
 
-All requested marketing routes are implemented. The journal intentionally has no invented articles. Pricing awaits confirmed plans. Legal routes describe current website behavior and clearly identify missing production policy and service terms details; finalize those with the business before launch. Draft legal content and the empty journal are excluded from indexing and the sitemap.
+`npm test` runs 20 API regression tests with a mocked email provider: it never sends real mail. `npm run verify` checks the running server's 20 pages, internal destinations, CSS/JS assets, required consent, metadata, draft noindex tags, resources and 404 behavior. Set `TEST_BASE_URL` to audit another local origin. Build first to generate the route manifest.
 
-## Enquiries
+See [the QA report](reports/website-audit.md) for browser checks, fixed defects and the limits of verification.
 
-Contact and demo forms validate input and prepare a mailto draft addressed to help@saloonsync.vasudevai.in. Visitors must send it through their own email app. No email is sent by this application, no appointment is automatically reserved, and form details are not sent to a server or stored by this website. Email delivery depends on the visitor's mail client. Server-side delivery or a scheduling service can be integrated later.
+## Vercel hosting
 
-## Motion
+The official Vercel CLI is a pinned development dependency. `vercel.json` selects Next.js and the existing build script. Vercel builds use its standard `.next` output; do not configure a static export or an `out` output directory because the enquiry API requires a server runtime.
 
-`MotionScene` uses CSS perspective, transform layers and requestAnimationFrame pointer tilt without a 3D dependency. Motion has a pause control, ignores touch tilt and respects system reduced-motion preferences. Product visuals are explicitly illustrative, not working Salon OS controls.
+1. Sign in using `npx vercel login`, or import the repository through the Vercel dashboard.
+2. Select this project directory, Next.js, and Node.js 24. Leave Output Directory at its framework default.
+3. Set the environment variables below for the intended Preview and Production environments.
+4. Run `npm run deploy:preview` for a preview. When ready, run `npm run deploy:production` to publish to production.
+5. Test the hosted origin, enquiry delivery and final domain separately. No hosted deployment was made during this local audit.
 
-No testimonials, usage statistics, prices, payment integrations or unpublished product capabilities are invented. No analytics, third-party embeds or application-set cookies are included, so this implementation does not add a cookie-consent banner.
+Official references: [Next.js on Vercel](https://vercel.com/docs/frameworks/full-stack/nextjs), [Vercel CLI](https://vercel.com/docs/cli), [Node.js versions](https://vercel.com/docs/functions/runtimes/node-js/node-js-versions).
 
-## Shared navigation and page depth
+### Environment variables
 
-`Breadcrumbs` renders a consistent Home / section / page trail above every interior page. `RouteNavigation` resets new routes after commit, including reused catch-all page transitions. It preserves fragment destinations such as `/#identity` and same-page section links. Plain same-page links also return to the top.
+Copy `.env.example` to `.env.local` locally; set values in Vercel's environment settings for hosting. Never commit `.env.local` or expose email credentials with `NEXT_PUBLIC_` names.
 
-`src/lib/page-guides.ts` contains editorial content for all 20 pages: workflow context, practical preparation checklists and page-specific questions. `PageGuide` renders these sections before the final page CTA. The provided logo is used in the shared wordmark, product preview and 3D brand scene through optimized Next.js images.
+| Variable | Purpose |
+| --- | --- |
+| `NEXT_PUBLIC_SITE_URL` | Final HTTPS marketing origin, without a trailing slash; used for canonical URLs, sitemap and email links. |
+| `NEXT_PUBLIC_LOGIN_URL` | Optional shared identity login URL. |
+| `NEXT_PUBLIC_REGISTER_URL` | Optional shared identity registration URL. |
+| `RESEND_API_KEY` | Server-only Resend API key. |
+| `RESEND_FROM_EMAIL` | Sender using a domain verified with Resend. |
+| `ADMIN_EMAIL` | Team inbox that receives enquiries. |
 
-## Preview and production output
+Without identity URLs, links lead to the identity notice on the home page. Without email configuration, valid enquiries receive a meaningful unavailable response; they are never reported as delivered.
 
-Use `npm run dev` while editing, and `npm run build` then `npm start` for a production preview. Development output uses `.next`; production output uses `.next-production` so building cannot overwrite the running development stylesheet assets. Stop a production preview before rebuilding that production output. `node scripts/verify-site.mjs` checks the active server, including its referenced CSS assets, after a production build.
+## Forms and privacy
+
+Contact and demo forms require unchecked, explicit enquiry consent. The API validates consent, field types, required fields, email, lengths, request size, JSON format and request origin; it drops honeypot submissions. The server sends team and confirmation emails through Resend and includes the consent timestamp in the team notification. User content is escaped in HTML templates. No application database is used for enquiries. Email and hosting providers may retain information.
+
+No marketing subscription is created by enquiry consent. A demo request does not reserve an appointment. Provider acceptance does not guarantee inbox delivery. Public abuse protection/rate limiting should be configured for `/api/enquiry` before broad launch.
+
+## Content and navigation
+
+`src/lib/content.ts` owns feature and solution data. `src/app/[...slug]/page.tsx` statically generates the interior routes and page metadata. `src/lib/page-guides.ts` supplies page-specific explanations and FAQs. `Breadcrumbs` aligns Home / section / page trails. `RouteNavigation` resets new pages to the top while preserving section anchors.
+
+`MotionScene` uses lightweight CSS perspective and pointer tilt, a pause control and reduced-motion preferences. Visuals are labeled as concepts. The user-provided logo is rendered with optimized Next.js images.
+
+Prices, journal articles, identity destinations and complete legal/commercial details still require confirmed business content. Draft legal pages and the empty journal remain noindex. Do not treat this implementation as finalized service terms or a complete production privacy policy.
+
+## Dependency audit
+
+Production dependencies currently have no reported npm advisories. The pinned Vercel CLI has transitive development-tool advisories; a compatible tar 7 override removes the critical tar finding. Remaining findings are documented in the QA report. Do not run a forced major-version audit fix without reviewing compatibility.

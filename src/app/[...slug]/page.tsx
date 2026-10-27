@@ -60,7 +60,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
       url: canonicalUrl,
       siteName: 'Saloonsync',
       locale: 'en_IN',
-      images: [{ url: ogImageUrl, width: 1200, height: 630, alt: `${name} — Saloonsync` }],
+      images: [{ url: ogImageUrl, alt: `${name} — Saloonsync` }],
     },
     twitter: {
       card: 'summary_large_image',

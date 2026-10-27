@@ -58,8 +58,6 @@ export const metadata: Metadata = {
     locale: 'en_IN',
     images: [{
       url: `${siteUrl}/saloonsync-logo.png`,
-      width: 1200,
-      height: 630,
       alt: 'Saloonsync — Salon Management Software',
     }],
   },
@@ -68,8 +66,6 @@ export const metadata: Metadata = {
     title: 'Saloonsync — Your salon, beautifully in sync',
     description: 'More time for your craft. A clearer way to manage your salon.',
     images: [`${siteUrl}/saloonsync-logo.png`],
-    creator: '@saloonsync',
-    site: '@saloonsync',
   },
   icons: {
     icon: [
@@ -80,9 +76,6 @@ export const metadata: Metadata = {
     shortcut: '/saloonsync-logo.png',
     apple: [
       { url: '/saloonsync-logo.png', sizes: '180x180', type: 'image/png' },
-    ],
-    other: [
-      { rel: 'mask-icon', url: '/saloonsync-logo.png' },
     ],
   },
   manifest: undefined,

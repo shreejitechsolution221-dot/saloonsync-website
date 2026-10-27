@@ -39,14 +39,14 @@ export function BlogPage() {
 export function LegalPage({ privacy = false }: { privacy?: boolean }) {
   const entries = privacy ? [
     ['Scope of this notice', 'This notice describes the current public marketing website. It does not describe data handling inside the Salon OS, identity service or customer booking application.'],
-    ['Contact and demo enquiries', 'The forms prepare an email using information you enter. This website does not submit those form details to a server or store them. Sending the message happens through your email app and provider. The recipient is help@saloonsync.vasudevai.in.'],
-    ['Cookies and analytics', 'This implementation includes no analytics scripts, advertising trackers or application-set cookies. Technical request information may be processed by the eventual hosting provider; that provider and its processing details have not been specified yet.'],
+    ['Contact and demo enquiries', 'The forms send your name, email, salon details, message and consent to our enquiry endpoint. The configured Resend email service delivers a notification to the team and a confirmation to your address. Enquiries are not saved in an application database by this implementation; email providers process and may retain the messages.'],
+    ['Cookies and analytics', 'This implementation includes no analytics scripts, advertising trackers or application-set cookies. Hosting and email providers process technical request information. Fonts are requested from Google Fonts, which receives the information needed to serve those files. Production provider and retention details still need confirmation.'],
     ['Account destinations', 'Login and registration will link to the shared identity service when its URLs are configured. The data handling notice for that service must be reviewed separately.'],
     ['Questions and completion', 'Contact help@saloonsync.vasudevai.in with website privacy questions. Operator identity, hosting details, enquiry retention practices and applicable privacy rights must be confirmed before a complete production policy is published.'],
   ] : [
     ['About this website', 'This public website introduces Saloonsync, a salon management platform. It is separate from the operational and customer booking applications.'],
     ['Product information', 'Illustrations are marked as concepts and are not a live application. Confirm features, integrations, availability and suitability directly with the team.'],
-    ['Pricing and demo enquiries', 'No plan prices or contractual inclusions are published here. Preparing an email enquiry does not create a subscription or reserve a demonstration appointment.'],
+    ['Pricing and demo enquiries', 'No plan prices or contractual inclusions are published here. Sending an enquiry does not create a subscription or reserve a demonstration appointment.'],
     ['Accounts and access', 'This website does not create accounts. Account and service terms must be provided by the shared identity and application services before account creation or purchase.'],
     ['Publication status', 'Final service terms require confirmed operator identity, jurisdiction, subscription conditions and support arrangements. Those details have not been supplied. Contact help@saloonsync.vasudevai.in for questions.'],
   ];

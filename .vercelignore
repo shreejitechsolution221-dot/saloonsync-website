@@ -1,0 +1,7 @@
+.env*
+!.env.example
+.next
+.next-production
+node_modules
+tests
+reports

@@ -57,7 +57,7 @@ export function EnquiryForm({ demo = false }: { demo?: boolean }) {
 
       const json: { ok?: boolean; error?: string } = await res.json().catch(() => ({}));
 
-      if (!res.ok) {
+      if (!res.ok || json.ok !== true) {
         setError(json.error || 'Something went wrong. Please try again or email us directly.');
         setState('error');
         return;
@@ -84,8 +84,8 @@ export function EnquiryForm({ demo = false }: { demo?: boolean }) {
         </div>
         <p style={{ color: 'var(--color-text-muted)', lineHeight: 1.7 }}>
           {demo
-            ? "We\u2019ve received your demo request and sent a confirmation to your email. Our team will be in touch to arrange a time."
-            : "We\u2019ve received your message and sent you a confirmation. We\u2019ll reply as soon as we can."}
+            ? "We\u2019ve received your demo request and submitted a confirmation email for delivery. Our team will be in touch to arrange a time."
+            : "We\u2019ve received your message and submitted a confirmation email for delivery. We\u2019ll reply as soon as we can."}
         </p>
         <a
           className="text-button"

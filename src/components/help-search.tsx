@@ -5,7 +5,7 @@ const questions = [
   ['What is Saloonsync?', 'Saloonsync is a salon management platform for appointments, customers, staff, services, billing, inventory and business operations.'],
   ['Where do I log in?', 'Use the Log in link to access the shared identity service once it is connected. Identity destinations are not yet published on this website.'],
   ['Do customers and salon staff use the same application?', 'The customer booking experience and Salon OS are separate applications. They use a shared Saloonsync identity, with access determined by assigned roles.'],
-  ['How do I request a demo?', 'Go to Book a demo and prepare an enquiry. Send the draft through your email app to help@saloonsync.vasudevai.in. No appointment is automatically scheduled.'],
+  ['How do I request a demo?', 'Go to Book a demo, complete the form and tick the enquiry consent box. Submit your request to the team. No appointment is automatically scheduled.'],
   ['Where can I find pricing?', 'Confirmed plans and prices have not been published. Contact the team to discuss your salon and request pricing information.'],
   ['How do I contact support?', 'Email help@saloonsync.vasudevai.in. Include a description of your question. Never include passwords or sensitive customer information.'],
 ];

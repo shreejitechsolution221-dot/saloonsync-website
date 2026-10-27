@@ -117,7 +117,7 @@ export const pageGuides: Record<string, Guide> = {
       { title: 'Understand what is included', text: 'Ask which product areas are available, who needs access and whether your required workflows are supported. Make sure those details are explicit in the pricing information you receive.', icon: 'box' },
       { title: 'Ask about the practical details', text: 'Discuss the billing period, any setup requirements and the support arrangements that would apply. No prices, trial periods or contractual inclusions are assumed by this website.', icon: 'card' },
     ], checklist: ['Feature and integration requirements', 'Team size and location structure', 'Setup, billing and support questions'],
-    faqs: [['Is there a free trial?', 'A trial offer has not been confirmed here. Ask the team about current evaluation options.'], ['Will requesting pricing create an account or charge me?', 'No. The contact form prepares an email enquiry. It does not create an account, collect payment or start a subscription.']],
+    faqs: [['Is there a free trial?', 'A trial offer has not been confirmed here. Ask the team about current evaluation options.'], ['Will requesting pricing create an account or charge me?', 'No. The contact form sends an enquiry to the team. It does not create an account, collect payment or start a subscription.']],
   },
   '/about': {
     eyebrow: 'A CONSIDERED APPROACH', heading: 'The details are part of the experience.',
@@ -135,7 +135,7 @@ export const pageGuides: Record<string, Guide> = {
       { title: 'Product and pricing questions', text: 'Include your salon name, location count and the workflows you want to discuss. For pricing, mention the roles that need access and any requirements that are essential to your business.', icon: 'card' },
       { title: 'Help with an existing question', text: 'Describe the application or page involved and what you expected to happen. You can explain the steps without sending passwords, payment details or customer records.', icon: 'people' },
     ], checklist: ['A short description of your question', 'The product area involved', 'A reply address you can access'],
-    faqs: [['Has the form sent my message?', 'The form prepares a draft in your email app. You must send that draft to complete the enquiry. The website does not send it automatically.'], ['What if an email app does not open?', 'Email help@saloonsync.vasudevai.in directly using your preferred provider. No request has been submitted until you send the message.']],
+    faqs: [['Has the form sent my message?', 'When the form reports success, the email provider has accepted the messages for delivery. Check your inbox for the confirmation. Delivery to an inbox is not guaranteed by acceptance.'], ['What if the form cannot send my message?', 'The form displays an error if sending fails. You can try again or email help@saloonsync.vasudevai.in directly. If a partial send occurred, the team may already have received your enquiry.']],
   },
   '/book-a-demo': {
     eyebrow: 'A DEMO AROUND YOUR REAL DAY', heading: 'Bring your questions. Bring your workflow.',
@@ -144,7 +144,7 @@ export const pageGuides: Record<string, Guide> = {
       { title: 'Walk through a typical visit', text: 'Describe how appointments are handled, who delivers services and how the visit reaches billing. Highlight the handovers that matter most to your team.', icon: 'calendar' },
       { title: 'Make your requirements specific', text: 'Ask about the product areas, reports, integrations and access needs that are important to your salon. Request confirmation of anything you would rely on operationally.', icon: 'check' },
     ], checklist: ['Your service and appointment routine', 'Your team and location structure', 'The questions you want the demo to answer'],
-    faqs: [['Is a time booked when I complete this form?', 'No. The form prepares an email enquiry. A demonstration time needs to be arranged with the team after you send it.'], ['Do I need an account to enquire?', 'No account is created or required by this enquiry form. Login and registration belong to the separate shared identity service.']],
+    faqs: [['Is a time booked when I complete this form?', 'No. The form sends a demo enquiry. A demonstration time needs to be arranged with the team afterwards.'], ['Do I need an account to enquire?', 'No account is created or required by this enquiry form. Login and registration belong to the separate shared identity service.']],
   },
   '/help': {
     eyebrow: 'FIND THE RIGHT STARTING POINT', heading: 'Different questions. A clearer route forward.',
@@ -168,9 +168,9 @@ export const pageGuides: Record<string, Guide> = {
     eyebrow: 'YOUR NEXT STEP, WITH CONTEXT', heading: 'Understand where your information goes.',
     intro: 'Different parts of an enquiry involve different services. The public website and your email provider have separate roles.',
     panels: [
-      { title: 'While you complete the form', text: 'The website validates the fields in your browser and uses them to prepare an email link. It does not post the form information to a server or save it in browser storage.', icon: 'box' },
-      { title: 'When you send the email', text: 'Your chosen email provider handles sending the message to help@saloonsync.vasudevai.in. Only include information needed to explain your enquiry.', icon: 'people' },
-    ], checklist: ['Keep sensitive records out of enquiries', 'Review your email draft before sending', 'Contact us with website privacy questions'],
+      { title: 'While you complete the form', text: 'The website validates your fields and requires enquiry consent. On submission, the form sends those details to the enquiry endpoint for validation and email delivery. It does not save them in browser storage.', icon: 'box' },
+      { title: 'When you submit an enquiry', text: 'The configured Resend service delivers messages to the team and a confirmation to you. Your email provider handles the confirmation in your inbox. Only include information needed to explain your enquiry.', icon: 'people' },
+    ], checklist: ['Keep sensitive records out of enquiries', 'Review your form details before sending', 'Contact us with website privacy questions'],
     faqs: [['Does this notice cover every Saloonsync application?', 'No. This notice concerns the current public marketing website. The identity, Salon OS and customer booking applications need their own confirmed data-handling information.'], ['Is a complete production policy available?', 'Not yet. The operator, hosting, retention and applicable privacy-rights details identified above still need confirmation.']],
   },
   '/terms': {
@@ -180,6 +180,6 @@ export const pageGuides: Record<string, Guide> = {
       { title: 'Review the real workflow', text: 'Ask to see the features and integrations your business would use. Website illustrations are concepts, so they should not be treated as a live product demonstration.', icon: 'calendar' },
       { title: 'Review a specific offer', text: 'Confirm pricing, inclusions, setup needs and the terms that would apply before choosing a subscription. No purchase or account creation takes place on this website.', icon: 'card' },
     ], checklist: ['Confirm required functionality', 'Review current pricing and inclusions', 'Obtain the applicable service terms'],
-    faqs: [['Does an enquiry create a service agreement?', 'The website enquiry only prepares an email draft. It does not create a subscription or process a purchase.'], ['Where can I obtain final service terms?', 'Contact help@saloonsync.vasudevai.in. Final service terms are pending the confirmed business and commercial details described above.']],
+    faqs: [['Does an enquiry create a service agreement?', 'The website enquiry sends a message to the team. It does not create a subscription or process a purchase.'], ['Where can I obtain final service terms?', 'Contact help@saloonsync.vasudevai.in. Final service terms are pending the confirmed business and commercial details described above.']],
   },
 };
