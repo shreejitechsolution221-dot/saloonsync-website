@@ -18,13 +18,13 @@ export function EnquiryForm({ demo = false }: { demo?: boolean }) {
     setConsentError(false);
     setState('loading');
 
-    const data      = new FormData(event.currentTarget);
-    const name      = String(data.get('name')      || '').trim();
-    const email     = String(data.get('email')     || '').trim();
-    const salon     = String(data.get('salon')     || '').trim();
+    const data = new FormData(event.currentTarget);
+    const name = String(data.get('name') || '').trim();
+    const email = String(data.get('email') || '').trim();
+    const salon = String(data.get('salon') || '').trim();
     const locations = String(data.get('locations') || '').trim();
-    const message   = String(data.get('message')   || '').trim();
-    const website   = String(data.get('website')   || '').trim(); // honeypot
+    const message = String(data.get('message') || '').trim();
+    const website = String(data.get('website') || '').trim(); // honeypot
     const consent = data.get('consent') === 'on';
 
     // Client-side guard
@@ -132,7 +132,7 @@ export function EnquiryForm({ demo = false }: { demo?: boolean }) {
         Number of locations
         <select name="locations" defaultValue="1" disabled={state === 'loading'}>
           <option value="1">One location</option>
-          <option value="2\u20135">2\u20135 locations</option>
+          <option value="2\u20135">2 to 5 locations</option>
           <option value="6+">6 or more locations</option>
           <option value="Planning">Planning my first salon</option>
         </select>
